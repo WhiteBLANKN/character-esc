@@ -26,7 +26,10 @@ tokenizer = AutoTokenizer.from_pretrained(model_path)
 print(tokenizer.chat_template)
 
 def chat():
-    os.system('clear')
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
     
     system_prompt = (
         "你是一名出色的心里咨询师，能给用户带来正面能量，无论用户遇到什么样的问题，你都能帮助他恢复心理健康。"
