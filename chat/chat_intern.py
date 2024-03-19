@@ -25,7 +25,10 @@ def chat():
     tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     model = model.eval()
     history=[]
-    os.system('clear')
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
     for turn in range(max_turns):
         query = input("User: ")
         print('\n' + "InternLM: ", end="")
