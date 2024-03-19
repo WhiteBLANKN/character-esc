@@ -2,7 +2,12 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import os
 
-model_path = "/home/shijiajie/github/internlm2-chat-7b"
+#供大家测试，后续将删除
+if sys.argv[1] == 'download_form_modelscope':
+    model_path = snapshot_download('Shanghai_AI_Laboratory/internlm2-chat-7b')
+else:
+    model_path = "/home/shijiajie/github/internlm2-chat-7b"
+
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_compute_dtype=torch.bfloat16,
