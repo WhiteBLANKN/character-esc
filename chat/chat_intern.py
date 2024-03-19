@@ -8,7 +8,7 @@ import sys
 if sys.argv[1] == 'download_from_modelscope':
     model_path = snapshot_download('Shanghai_AI_Laboratory/internlm2-chat-7b')
 else:
-    model_path = "/home/shijiajie/github/internlm2-chat-7b"
+    model_path = sys.argv[1]
 
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
