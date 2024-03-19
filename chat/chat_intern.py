@@ -1,9 +1,11 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import os
+from modelscope import snapshot_download
+import sys
 
 #供大家测试，后续将删除
-if sys.argv[1] == 'download_form_modelscope':
+if sys.argv[1] == 'download_from_modelscope':
     model_path = snapshot_download('Shanghai_AI_Laboratory/internlm2-chat-7b')
 else:
     model_path = "/home/shijiajie/github/internlm2-chat-7b"
