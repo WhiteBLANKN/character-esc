@@ -1,4 +1,5 @@
 from string import Template
+import os
 
 def process_prompt(character: str) -> str:
     
@@ -19,3 +20,9 @@ def process_prompt(character: str) -> str:
     )
     
     return prompt
+
+def clean_screen():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')

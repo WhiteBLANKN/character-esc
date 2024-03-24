@@ -1,6 +1,6 @@
 from openai import OpenAI
 import argparse
-from prompt_template import process_prompt
+from utils import process_prompt, clean_screen
 import os
 
 parser = argparse.ArgumentParser()
@@ -56,7 +56,7 @@ def main():
         api_key=api_key,
         base_url=base_url,
     )
-
+    #请求API的响应
     completion = client.chat.completions.create(
         model=model_version,
         messages=[ 
@@ -65,7 +65,8 @@ def main():
         ],
         temperature=temperature,
     )
-
+    #清理屏幕并打印当前生成中的消息
+    clean_screen()
     print(completion.choices[0].message)
 
 if __name__ == "__main__":

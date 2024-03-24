@@ -6,7 +6,7 @@ import sys
 
 #供大家测试，后续将删除
 if sys.argv[1] == 'download_from_modelscope':
-    model_path = snapshot_download('Shanghai_AI_Laboratory/internlm2-chat-7b')
+    model_path = snapshot_download('Shanghai_AI_Laboratory/internlm2-chat-7b', cache_dir="E:\model")
 else:
     model_path = sys.argv[1]
 
