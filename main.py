@@ -1,4 +1,4 @@
-from convert_datasets_to_hf import get_dataset
+from dataset.convert_datasets_to_hf import get_dataset
 
 def main():
     
