@@ -22,6 +22,7 @@ parser.add_argument("--temperature", help="This parameter defines the varities o
 parser.add_argument("--sub_dataset_startpoint", help="Choose a legnth for trunction", default=0)
 parser.add_argument("--sub_dataset_endpoint", help="Choose a legnth for trunction", default=2000)
 parser.add_argument("--max_tries", help="Maximum number of failures", default=0)
+parser.add_argument("--auto_rate", action="store_true", help="Make sure that the prompt is good enough.", default=False)
 
 args = parser.parse_args()
 
@@ -99,7 +100,10 @@ def main():
             check_print(dialogs)
             
             #接受用户反馈
-            feedback = input('>>>取用该结果请输入`y`并回车，不取用该结果请输入`n`并回车，请输入：')
+            if not args.auto_rate:
+                feedback = input('>>>取用该结果请输入`y`并回车，不取用该结果请输入`n`并回车，请输入：')
+            else:
+                feedback = 'y'
             
             data = {
                 "acceptance": 1 if feedback != 'n' else 0,
