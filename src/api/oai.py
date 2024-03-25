@@ -1,6 +1,6 @@
 from openai import OpenAI
 import argparse
-from prompt_template import process_prompt
+from utils import process_prompt, clean_screen
 import os
 import json
 from tqdm import tqdm
