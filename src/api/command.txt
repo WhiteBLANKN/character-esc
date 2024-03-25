@@ -2,4 +2,4 @@
 python src/api/oai.py --api_key MOONSHOT_API_KEY --use_moonshot --character 海绵宝宝 --model_version moonshot-v1-8k --sub_dataset_startpoint 300
 
 #OpenAI 示例代码
-python src/api/oai.py --api_key OPENAI_API_KEY --character 海绵宝宝 --model_version gpt-4-0125-preview --sub_dataset_startpoint 300 --sub_dataset_endpoint 301
+python src/api/oai.py --api_key OPENAI_API_KEY --character 海绵宝宝 --model_version gpt-4-0125-preview --sub_dataset_startpoint 300 --system_prompt 你是一个非常善于做心理沟通的医疗专家，同时对对话写作非常擅长。

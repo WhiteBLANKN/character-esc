@@ -59,7 +59,7 @@ def get_dataset(sub_ds, sub_de):
             _content = extes_template(example)
             assert type(_scene) == str and type(_description) == str and type(_content) == str
         except:
-            print(f"Can not process Data NO.{index:<5}.And it had been Skipped.")
+            # print(f"Can not process Data NO.{index:<5}.And it had been Skipped.")
             continue
         scene.append(_scene)
         description.append(_description)

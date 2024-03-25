@@ -21,6 +21,7 @@ parser.add_argument("--model_version", help="Which version of model you select t
 parser.add_argument("--temperature", help="This parameter defines the varities of Model response.", default=0.3)
 parser.add_argument("--sub_dataset_startpoint", help="Choose a legnth for trunction", default=0)
 parser.add_argument("--sub_dataset_endpoint", help="Choose a legnth for trunction", default=2000)
+parser.add_argument("--max_tries", help="Maximum number of failures", default=0)
 
 args = parser.parse_args()
 
@@ -77,10 +78,11 @@ def main():
         base_url=base_url,
     )
     #最大失败重试次数
-    max_tries = 0
+    max_tries = int(args.max_tries)
     for i in tqdm(range(len(extes_dataset)), file=sys.stderr, desc="Processing"):
         
         try:
+            print(f"正在生成第{i}条数据")
             user_prompt = extes_dataset[i]['content'] + '\n\n' + user_prompt
             completion = client.chat.completions.create(
                 model=model_version,
@@ -96,9 +98,17 @@ def main():
             #清空屏幕并打印生成的文本内容：
             check_print(dialogs)
             
+            #接受用户反馈
+            feedback = input('>>>取用该结果请输入`y`并回车，不取用该结果请输入`n`并回车，请输入：')
+            
+            data = {
+                "acceptance": 1 if feedback != 'n' else 0,
+                "dialogs": dialogs
+            }
+            
             #将新生成的数据写入json文件
             with open(dir_path, 'a', encoding="utf-8") as f:
-                json.dump(dialogs, f, ensure_ascii=False)
+                json.dump(data, f, ensure_ascii=False)
                 f.write('\n')
         except:
             if i > max_tries:
