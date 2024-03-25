@@ -1,7 +1,9 @@
 import json
 from datasets import Dataset
+import os
 
-data_path = "/home/shijiajie/github/character-esc/dataset/ExTES.json"
+
+data_path = os.path.join(os.path.dirname(os.getcwd()), 'character-esc/dataset/ExTES.json')
 with open(data_path, 'r', encoding='utf-8') as files:
     json_data = json.loads(files.read())
     

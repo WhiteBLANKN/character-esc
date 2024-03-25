@@ -30,7 +30,7 @@ api_key = os.getenv(args.api_key)
 use_moonshot = args.use_moonshot
 character = args.character
 model_version = args.model_version
-temperature= args.temperature
+temperature= float(args.temperature)
 sub_ds = int(args.sub_dataset_startpoint)
 sub_de = int(args.sub_dataset_endpoint)
 
